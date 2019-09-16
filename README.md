@@ -11,10 +11,23 @@ This gem relies on Applescript (`osax`), which all Apple computers should have.
 ## Usage
 
 ```
+require 'osx_trash'
 OSX.trash file:path_to_file_list
 ```
 
-When running locally, `send_to_trash` may move files that are in a watched folder, such as by Dropbox or Google Filestream.  These programs may raise a Finder dialog to confirm moving them.  You will have to click "OK" for each one.  This may cause problems on remote / headless systems.  Please file an issue with bug report, or a PR.  Thanks.
+When running the gem locally, `send_to_trash` may move files that are in a watched folder, such as by Dropbox or Google Filestream.  These programs may raise a Finder dialog to confirm moving them.  You will have to click "OK" for each one.  This may cause problems on remote / headless systems.  Please file an issue with bug report, or a PR.  Thanks.
+
+You can also call from the CLI:
+
+```
+gem install osx_trash
+
+trash /path/to/a/file.jpg
+
+trash_all /path/to/file-with-list-of-paths.txt
+```
+
+I think that `zsh` may interfere with recognizing bin paths of installed gems.  If you have this issue, or a fix, please open an Issue on the repo.  Thanks.
 
 
 ## Development
