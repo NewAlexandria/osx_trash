@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require "osx_trash"
+
+file = case ARGV[1]
+
+OSX.trash  file: [file]
+
