@@ -10,12 +10,19 @@ class OSXTrash
   end
 
   def send_to_trash
-    @paths.map do |f|
+    @results = @paths.map do |f|
       IO.popen("osascript 2>&2", "w") do |stdin|
         stdin.puts %Q{tell app "Finder" to move the POSIX file "#{f}" to trash}
       end
       [$?.to_json, f]
     end
+
+    gather_errors
+    @results
+  end
+
+  def gather_errors
+    @errors = @results.select {|fs| fs.first.match("exit 1") }
   end
 
   private
