@@ -1,28 +1,23 @@
-# OsxTrash
+# OSX Trash
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/osx_trash`. To experiment with that code, run `bin/console` for an interactive prompt.
+Ruby class and CLI app for moving files to the OSX Trash
 
-TODO: Delete this and the text above, and describe your gem
+## Summary
 
-## Installation
+The OSX Trash gem will take a filepath containing paths to files that should be moved to the OSX trash.  The list can be a little noisy, with things that will go away with `strip`. When instantiatin the class, you can pass a hash of file: with the pathname, or paths: with an array. }
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'osx_trash'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install osx_trash
+This gem relies on Applescript (`osax`), which all Apple computers should have.
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+some_files = OsxTrash file:path_to_file_list
+some_files.send_to_trash
+puts some_files.errors
+```
+
+When running locally, `send_to_trash` may move files that are in a watched folder, such as by Dropbox or Google Filestream.  These programs may raise a Finder dialog to confirm moving them.  You will have to click "OK" for each one.  This may cause problems on remote / headless systems.  Please file an issue with bug report, or a PR.  Thanks.
+
 
 ## Development
 
