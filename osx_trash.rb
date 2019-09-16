@@ -1,5 +1,7 @@
+require "osx_trash/version"
 
-class OSXTrash
+module OsxTrash
+  class Error < StandardError; end
 
   attr_reader :path, :results, :errors
 
