@@ -11,9 +11,7 @@ This gem relies on Applescript (`osax`), which all Apple computers should have.
 ## Usage
 
 ```
-some_files = OsxTrash file:path_to_file_list
-some_files.send_to_trash
-puts some_files.errors
+OSX.trash file:path_to_file_list
 ```
 
 When running locally, `send_to_trash` may move files that are in a watched folder, such as by Dropbox or Google Filestream.  These programs may raise a Finder dialog to confirm moving them.  You will have to click "OK" for each one.  This may cause problems on remote / headless systems.  Please file an issue with bug report, or a PR.  Thanks.
